@@ -6,6 +6,7 @@ List of pertinent projects:
 * [Analysis of Meat Consumption](githublinktofolder)
 * [Analysis of Shopping Trends](githublinktofolder)
 * [Visualization of COVID-19 Data](githublinktofolder)
+* [Class assignment of resampling methods](./ResamplingJackknifeVsBootstrap.pdf)
 
 
 In this directory, I plan to talk about some projects that I have done.

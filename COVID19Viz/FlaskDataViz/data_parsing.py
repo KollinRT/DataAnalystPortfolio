@@ -1,9 +1,18 @@
 # Import required packages
+import shutil
 import pandas as pd
 import os
+## Could download and request generate the .csv file via, but easier to just grab and download the .csv file yourself.
+# import requests
+#
+# url = 'https://data.cdc.gov/api/views/muzy-jte6/rows.csv?accessType=DOWNLOAD'
+# response = requests.get(url)
+#
+# with open('data.csv', 'wb') as f:
+#     f.write(response.content)
 
 # load data
-df = pd.read_csv("./Weekly_Provisional_Counts_of_Deaths_by_State_and_Select_Causes__2020-2023.csv")
+df = pd.read_csv("./static/Weekly_Provisional_Counts_of_Deaths_by_State_and_Select_Causes__2020-2023.csv")
 
 os.chdir('./static')
 
@@ -14,13 +23,21 @@ df['Week Ending Date'] = pd.to_datetime(df['Week Ending Date'])
 df.set_index('Week Ending Date', inplace=True)
 
 # group the data by state and resample by month
-df_monthly = df.groupby('Jurisdiction of Occurrence').resample('M').sum()
+df_monthly = df.groupby('Jurisdiction of Occurrence').resample('M').sum(numeric_only=True)
 
 # reset the index to make 'Jurisdiction of Occurrence' and 'Week Ending Date' columns
 df_monthly = df_monthly.reset_index()
 
-
 state_month_combinations = df_monthly[['Jurisdiction of Occurrence', 'Week Ending Date']].drop_duplicates()
+
+# Check if path exists, if it does, erase it and remake it new. If it doesn't, just create the director.
+path = ['./allData', './StateData']
+for filedir in path:
+    try:
+        os.mkdir(filedir)
+    except OSError as error:
+        shutil.rmtree(filedir)
+        os.mkdir(filedir)
 
 # Get StateData files generated for chloropleth
 for state, month in state_month_combinations.itertuples(index=False):

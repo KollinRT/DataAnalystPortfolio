@@ -17,4 +17,4 @@ Purpose: To explore the visualization of time-series data for COVID-19.
 
 ## How to improve
 - Utilization of React for the frontend and Typescript to accommodate the larger app codebase as it'd inevitably grow in complexity.
-- Switch the data digestion in Python from downloading to the data to grabbing it from the API and processing it locally.
+- Switch the data digestion in Python from downloading to the data to grabbing it from the API and processing it locally. However, one complaint is that this would require the user to sign up and get an authenticated account to use, hence the choice to download and process locally.

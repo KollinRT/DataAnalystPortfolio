@@ -3,8 +3,8 @@
 
 List of pertinent projects:
 * [Exploratory Data Analysis of Subset of QM-9 Dataset Analysis](./QMAnalysis/README.md)
-* [Analysis of Meat Consumption](./Presentation1.pdf)
-* [Analysis of Shopping Trends](./Presentation1.pdf)
+* [Analysis of Meat Consumption](./DataAnalyst.pdf)
+* [Analysis of Shopping Trends](./DataAnalyst.pdf)
 * [Visualization of COVID-19 Data](./COVID19Viz/README.md)
 * [Class assignment of resampling methods](./ResamplingJackknifeVsBootstrap.pdf)
 

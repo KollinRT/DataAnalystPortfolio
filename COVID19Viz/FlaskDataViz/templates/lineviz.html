@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+
+<meta charset="utf-8">
+
+{% include 'head.html' %}
+
+<script src="https://d3js.org/d3.v6.min.js"></script>
+
+<body>
+
+<h1>COVID-19 Data for {{ stateChosen }}</h1>
+
+<svg width="960" height="500"></svg>
+    <script>
+      // Set the dimensions of the canvas / graph
+      var margin = { top: 30, right: 20, bottom: 70, left: 50 },
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+      // Parse the date / time
+      var parseTime = d3.timeParse("%m-%Y");
+
+      // Set the ranges
+      var x = d3.scaleTime().range([0, width]);
+      var y = d3.scaleLinear().range([height, 0]);
+
+      // Define the line
+      var valueline = d3
+        .line()
+        .x(function (d) {
+          return x(d.date);
+        })
+        .y(function (d) {
+          return y(d.value);
+        });
+
+      var svg = d3
+        .select("svg")
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      // Get the data
+      d3.csv("/static/StateData/{{ stateChosen }}_data.csv")
+        .then(function (data) {
+            console.log(data);
+            console.log(data.month);
+            console.log(data.value);
+          // format the data
+          data.forEach(function (d) {
+            d.date = parseTime(d["Month"]); // OOH, this works!
+            d.value = +d.value;
+          });
+
+          // Scale the range of the data
+          x.domain(
+            d3.extent(data, function (d) {
+              return d.date;
+            })
+          );
+          y.domain([
+            0,
+            d3.max(data, function (d) {
+              return d.value;
+            }),
+          ]);
+
+          console.log(data);
+          console.log(data.map(d => d.date));
+
+          // Add the valueline path.
+          svg
+            .append("path")
+            .data([data])
+            .attr("class", "line")
+            .attr("d", valueline);
+
+          // Add the X Axis
+          svg
+            .append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x).ticks(12));
+
+          // Add the Y Axis
+          svg.append("g").call(d3.axisLeft(y));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    </script>
+
+<h3>Plot a different state:</h3>
+{% include 'lineform.html' %}
+
+<h3>Plot a different month:</h3>
+{% include 'mapform.html' %}
+
+<h2>Back to <a href="{{ url_for('index') }}">home page</a> </h2>
+
+</body>
+</html>

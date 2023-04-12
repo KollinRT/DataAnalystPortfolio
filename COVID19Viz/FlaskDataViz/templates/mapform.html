@@ -1,0 +1,16 @@
+    <form action="/mapviz" method="get">
+      <label for="year">Choose a year:</label>
+      <select name="years" id="year">
+        {% for years in years %}
+          <option value="{{ years }}"> {{ years }}</option>
+        {% endfor %}
+      </select>
+      <label for="month">Choose a month:</label>
+      <select name="months" id="month">
+        {% for month in months %}
+           <option value="{{ month }}"> {{ month }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Submit" />
+    </form>
+

@@ -1,0 +1,50 @@
+/* Legend Font Style */
+body {
+  font: 11px sans-serif;
+  background-color: #ffffff;
+}
+
+/* Legend Position Style */
+.legend {
+  position: absolute;
+  left: 20px;
+  top: 30px;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+h1 {
+  text-align: center;
+}
+
+#description {
+  text-align: center;
+}
+
+/* TODO: Working to fix this up. Want border and the image centered... */
+body svg {
+  text-align: center;
+  /* background-color: black; */
+  /*border: 3px solid red;*/
+}
+
+/* TODO: Take inspiration from my own main.html file since it does it! I've got the SVG element not at the top, at all....*/
+
+.tooltip {
+    position: absolute;
+    z-index: 9999; /* ensures this is top of the stack */
+    background-color: #fff; /* sets color of the background of hover */
+    border: 1px solid #ccc;
+    padding: 5px;
+    font-size: 12px;
+    pointer-events: none; /* prevent tooltip from blocking mouse events */
+}

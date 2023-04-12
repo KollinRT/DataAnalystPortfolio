@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'head.html' %}
+
+  <body>
+    <!-- TODO: erase this classification below and just translate to separate files? -->
+    <!-- <h1>USA COVID Data</h1>
+    <div id="description">Amount of covid deaths per state.</div> -->
+    <!-- Give a tag for the tooltip to follow along with for the d3.js viz -->
+  </body>
+<!-- https://gist.github.com/wboykinm/dbbe50d1023f90d4e241712395c27fb3 -->
+
+<h2>Plot data by month</h2>
+{# Include the drop down form selections #}
+{% include 'mapform.html' %}
+
+<h2>Plot data by state</h2>
+{% include 'lineform.html' %}
+
+
+</html>

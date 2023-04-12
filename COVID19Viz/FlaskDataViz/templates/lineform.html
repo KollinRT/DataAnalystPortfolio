@@ -1,0 +1,11 @@
+    <form action="/lineviz" method="get">
+      <label for="state">Choose a year:</label>
+      <select name="states" id="year">
+        {% for states in states %}
+          <option value="{{ states }}"> {{ states }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Submit" />
+    </form>
+
+

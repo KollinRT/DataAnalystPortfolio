@@ -7,6 +7,7 @@ List of pertinent projects:
 * [Analysis of Shopping Trends](./DataAnalyst.pdf)
 * [Visualization of COVID-19 Data](./COVID19Viz/README.md)
 * [Class assignment of resampling methods](./ResamplingJackknifeVsBootstrap.pdf)
+* [Iris EDA](./IrisEDA/IrisAnalysis.ipynb)
 
 
 In this directory, I plan to talk about some projects that I have done.
